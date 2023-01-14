@@ -1,0 +1,841 @@
+/* Sidebar */
+.nav-icon {
+  font-size: 15px !important;
+}
+
+/* Horizontal scroll */
+@media (min-width: 992px) {
+  .container-scroll {
+    overflow-x: auto;
+  }
+  .container-scroll > .row {
+    width: 105%; /* = 100% * 4/3 */
+  }
+}
+
+/* Course Specific */
+.card-course {
+  margin-top: 1rem;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 80px 14px 24px;
+  cursor: pointer;
+}
+
+.card-course:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-course h3 {
+  font-weight: 600;
+}
+
+.card-course h4 {
+  font-weight: 400;
+}
+
+.card-course img {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  max-height: 120px;
+}
+.card-course-online-label {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-course-status-label {
+  /* font-size: 1rem; */
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-course-item-wrapper {
+  display: flex;
+}
+
+.card-course-item {
+  font-weight: 600;
+  color: #6d6d6d;
+  margin-bottom: 12px;
+}
+/* .card-course-item-icon{
+  color: #9DE1FF; 
+  margin-right: 0.5em;
+} */
+
+/* Card-v1 */
+/* Used in class.html */
+.card-v1 {
+  margin-top: 2px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 2px 2px 10px rgba(46, 46, 46, 0.3);
+  /* transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12); */
+  padding: 14px 24px 14px 24px;
+  cursor: pointer;
+}
+
+.card-v1:hover {
+  /* transform: scale(1.05); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-v1 h3 {
+  font-weight: 600;
+}
+
+.card-v1 h4 {
+  font-weight: 400;
+}
+
+.card-v1 p {
+  font-size: smaller;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* .card-v1 img {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  max-height: 120px;
+} */
+.card-v1-online-label {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-v1-status-label {
+  /* font-size: 1rem; */
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: 2px 2px 3px rgba(46, 46, 46, 0.7);
+}
+
+.card-v1-status-label.primary {
+  background-color: #2e74b6 !important;
+}
+
+.card-v1-status-label.pending {
+  background-color: rgb(253, 114, 0) !important;
+}
+
+.card-v1-status-label.active {
+  background-color: #4bb543 !important;
+}
+
+.card-v1-status-label.passive {
+  background-color: gray !important;
+}
+
+.card-v1-status-label.danger {
+  background-color: red !important;
+}
+
+.card-v1-item-wrapper {
+  display: flex;
+}
+
+.card-v1-item {
+  font-weight: 600;
+  color: #6d6d6d;
+}
+/* Class Specific */
+.card-class {
+  margin-top: 1rem;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 24px 14px 24px;
+}
+
+.card-class-wrapper {
+  cursor: pointer !important;
+}
+
+.card-class:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-class h3 {
+  font-weight: 600;
+}
+
+.card-class h4 {
+  font-weight: 400;
+}
+
+.card-class-online-label {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-class-status-label {
+  /* font-size: 1rem; */
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-class-pro-label {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: #bf40bf;
+  border-radius: 4px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-class-item-wrapper {
+  display: flex;
+}
+
+.card-class-item {
+  font-weight: 400;
+  color: #6d6d6d;
+}
+
+.card-class-item-wrapper .fas {
+  color: #9de1ff;
+  margin-right: 0.5em;
+  font-size: 18px;
+}
+
+/* Student Specific */
+.card-student {
+  /* margin-top: 1rem; */
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 24px 14px 24px;
+  cursor: pointer;
+}
+
+.card-student:hover {
+  /* transform: scale(1.05); */
+  background: #fff;
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06); */
+}
+
+.card-student h3 {
+  font-weight: 600;
+}
+
+.card-student h4 {
+  font-weight: 400;
+}
+
+.card-student img {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  max-height: 120px;
+}
+.card-student-online-label {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 0.5em;
+  color: white;
+  background-color: rgb(253, 114, 0);
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-student-status-label {
+  font-size: 0.6rem;
+  font-weight: 400;
+  /* margin-left: 0.5em; */
+  color: white;
+  /* background-color: rgb(253, 114, 0); */
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  margin: 0;
+  display: inline-block;
+  box-shadow: 2px 2px 4px rgb(46, 46, 46);
+}
+
+.card-student-status-label.primary {
+  background-color: #2e74b6 !important;
+}
+
+.card-student-status-label.pending {
+  background-color: rgb(253, 114, 0) !important;
+}
+
+.card-student-status-label.active {
+  background-color: #4bb543 !important;
+}
+
+.card-student-status-label.passive {
+  background-color: gray !important;
+}
+
+.card-student-status-label.danger {
+  background-color: red !important;
+}
+
+.card-student-item-wrapper {
+  display: flex;
+}
+
+.card-student-item {
+  margin-top: 2px;
+  padding-top: 4px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  /* padding: 14px 24px 14px 24px; */
+  cursor: pointer;
+  border-bottom: solid #ababab;
+  border-width: thin;
+}
+
+.card-student-item:hover {
+  /* transform: scale(1.05); */
+  /* background: #dddddd;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-student-item > p {
+  margin: 0;
+}
+
+.card-student-item p {
+  font-size: smaller;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Tutor Specific */
+.card-tutor {
+  margin-top: 1rem;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 24px 14px 24px;
+  cursor: pointer;
+}
+
+.card-tutor:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Change this to card IB, National, Cambridge, UEC, Language, Computer Programming, English Exam */
+.card-1 {
+  background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-2 {
+  background-image: url(https://ionicframework.com/img/getting-started/components-card.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-3 {
+  background-image: url(https://ionicframework.com/img/getting-started/theming-card.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-cambridge {
+  background-image: url("../../assets/img/card-course-cambridge.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-kpm {
+  background-image: url("../../assets/img/card-course-kpm.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-uec {
+  background-image: url("../../assets/img/card-course-uec.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-pearson {
+  background-image: url("../../assets/img/card-course-pearson.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-ib {
+  background-image: url("../../assets/img/card-course-ib.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+.card-language-and-english-exam {
+  background-image: url("../../assets/img/card-course-language-and-english.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-music {
+  background-image: url("../../assets/img/card-course-music.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+.card-computer-programming {
+  background-image: url("../../assets/img/card-course-programming.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 80px;
+}
+
+/* Used in Class */
+.card-fixed {
+  margin-top: 1rem;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 80px 18px 36px;
+  /* cursor: none; */
+}
+
+.card-fixed:hover {
+  /* transform: scale(1.05); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card-fixed h3 {
+  font-weight: 600;
+}
+
+.card-fixed img {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  max-height: 120px;
+}
+
+/* *Utilities - Card general */
+.card-general {
+  margin-top: 1rem;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 24px 14px 24px;
+}
+
+/* Used for multistep form */
+.invalid {
+  background-color: #ffdddd !important;
+}
+
+/* Lesson Specific  */
+.lesson-header {
+  padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+  border-top: solid #2e74b6;
+  border-bottom: solid #2e74b6;
+  border-width: 2px;
+  margin-top: 1rem;
+}
+
+.lesson-header p {
+  padding: 0.3rem 0 0.3rem 0;
+  margin: 0;
+  font-size: smaller;
+  font-weight: 600;
+  color: gray;
+}
+
+.lesson-wrapper {
+  /* padding: 0rem 0rem 0rem 0rem;
+  background-color: #fff;
+  border-bottom: solid #2e74b6;
+  border-width: thin;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12); */
+
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 4px;
+  /* margin-left: 0.5em; */
+  background-color: #fff;
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.lesson-wrapper:hover {
+  /* transform: scale(1.01); */
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-active {
+  cursor: pointer;
+}
+
+.lesson-item {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: small;
+  font-weight: 300;
+}
+
+/* Student specific */
+
+.student-item {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: small;
+  font-weight: 300;
+}
+
+.student-wrapper {
+  /* padding: 0rem 0rem 0rem 0rem;
+  border-bottom: solid #2e74b6;
+  border-width: thin;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12); */
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 4px;
+  /* margin-left: 0.5em; */
+  background-color: #fff;
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.student-wrapper:hover {
+  /* transform: scale(1.01); */
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tutor specific - Used in Class-Select Tutor */
+.tutor-wrapper {
+  padding: 0.5rem 0rem 0rem 0rem;
+  border-bottom: solid #2e74b6;
+  border-width: thin;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+}
+
+.tutor-wrapper:hover {
+  transform: scale(1.01);
+}
+
+.tutor-item {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: small;
+  font-weight: 300;
+}
+
+/* Tooltips */
+.tooltiptext-general {
+  /* This is for the tooltip text */
+  visibility: hidden;
+  width: 300px;
+  /* background-color: #adadad; */
+  /* color: #adadad; */
+  background-color: white;
+  text-align: left;
+  font-size: smaller;
+  padding: 5px;
+  border-radius: 5px; /* This defines tooltip text position */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  /* This makes the margin half of the width to the center */
+  margin-left: -50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: thin solid #2e74b6;
+}
+
+.tooltiptext-trigger:hover .tooltiptext-general {
+  /* Makes tooltip text visible when text is hovered on */
+  visibility: visible;
+  z-index: 1000;
+}
+
+.tooltiptext-general {
+  /* This is for the tooltip text */
+  visibility: hidden;
+  width: 300px;
+  /* color: #adadad; */
+  background-color: white;
+  text-align: left;
+  font-size: smaller;
+  padding: 5px;
+  border-radius: 5px; /* This defines tooltip text position */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  /* left: 50%; */
+  left: 10%;
+  /* This makes the margin half of the width to the center */
+  margin-left: -50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: thin solid #2e74b6;
+}
+
+.tooltiptext-general h6 {
+  margin: 0;
+  color: #2e74b6;
+}
+.tooltiptext-general p {
+  margin: 0;
+  color: grey;
+  line-height: 1.6;
+  font-size: small;
+}
+
+.tooltiptext-trigger {
+  background-color: #2e74b6;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  color: white;
+  border-radius: 20%;
+  font-size: x-small;
+  cursor: pointer;
+}
+
+.tooltiptext-trigger:hover .tooltiptext-general {
+  /* Makes tooltip text visible when text is hovered on */
+  visibility: visible;
+}
+
+/* Date Picker specific */
+.addLessonModal {
+  z-index: 10 !important;
+}
+.mc-calendar {
+  z-index: 10000 !important;
+}
+
+/* Table General */
+td input[type="text"] {
+  border: solid #dddddd thin;
+  background-color: #fff;
+}
+td input[type="number"] {
+  border: solid #dddddd thin;
+  background-color: #fff;
+  text-align: right;
+}
+
+/* Invoice Table */
+.table-item-top {
+  margin: 0.5rem 0 auto 0;
+}
+
+.table-item {
+  /* border: solid thin #dddddd; */
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.table-title {
+  font-size: small;
+  font-weight: 300;
+  color: gray;
+  margin-bottom: 0;
+}
+
+.table-tag {
+  font-size: small;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0 2px;
+  background-color: rgba(46, 116, 182, 0.7);
+  border-radius: 6px;
+  padding: 2px 6px 2px 6px;
+}
+
+.table-cat {
+  font-size: small;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0 2px;
+  background-color: #ceb6e6;
+  border-radius: 6px;
+  padding: 2px 6px 2px 6px;
+}
+
+.th-item {
+  min-width: 200px;
+}
+.th-quantity {
+  width: 100px;
+  min-width: 100px;
+  text-align: right;
+}
+.th-price {
+  width: 100px;
+  min-width: 100px;
+  text-align: right;
+}
+.th-amount {
+  width: 100px;
+  min-width: 100px;
+  text-align: right;
+}
+.th-action {
+  width: 30px;
+  min-width: 30px;
+}
+
+.td-amount {
+  text-align: right;
+}
+
+.td-subtotal {
+  text-align: right;
+  font-weight: 500;
+}
+
+.th-hidden {
+  display: none;
+}
+.td-hidden {
+  display: none;
+}
+
+.addrow {
+  text-transform: none;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  /* .card-header {
+    display: none;
+  } */
+  .card-v1 {
+    margin-bottom: 0.8rem;
+    border-radius: 10px;
+  }
+  .lesson-header {
+    display: none;
+  }
+
+  .card-student {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (max-width: 992px) {
+}

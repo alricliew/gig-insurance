@@ -1,0 +1,571 @@
+.main-body {
+  padding-top: 3rem;
+  /* margin-top:3rem; */
+}
+
+#tutor-upper-block {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  /* padding-left:1rem; */
+  /* padding-right:1rem; */
+}
+
+/* Upper Block Specific Start */
+
+.tutor-profile-sidebar {
+  /* background: cornflowerblue; */
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  text-align: center;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+
+.tutor-img-box {
+  margin: auto;
+  height: 150px;
+  width: 150px;
+}
+
+.tutor-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.tutor-profile-sidebar-lower-block {
+  /* background: crimson; */
+  margin: auto;
+  text-align: center;
+}
+
+.tutor-rating-font {
+  /* margin: auto; */
+  /* background: rosybrown; */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #212121;
+  margin: auto;
+  /* text-align:right; */
+  text-align: center;
+  /* margin-top:0.8em; */
+  /* margin-bottom:0; */
+}
+
+.tutor-upper-right-profile-main-block {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  margin-left: 0;
+}
+
+.tutor-review {
+  text-align: center;
+}
+
+.tutor-last-online {
+  margin: 0;
+  text-transform: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #212121;
+  margin-bottom: 1em;
+}
+
+.tutor-profile-name {
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  color: #212121;
+  font-weight: 900;
+  font-family: Verdana, sans-serif;
+  margin-bottom: 0;
+}
+
+.tutor-profile-detail {
+  font-family: Verdana, sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: #5bcbf0;
+  color: #212121;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.tutor-profile-detail::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 5em;
+  background: #5bcbf0;
+  /* background:#0277BD; */
+  margin: 0.8em auto 0.5em;
+  opacity: 0.3;
+}
+
+.tutor-profile-education {
+  margin: 0;
+  text-transform: normal;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  /* color: #5bcbf0; */
+  color: #212121;
+  margin-bottom: 1em;
+}
+
+.tutor-profile-area {
+  margin: 0;
+  text-transform: normal;
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  color: #212121;
+  margin-bottom: 1em;
+}
+
+.tutor-profile-subject {
+  margin: 0;
+  text-transform: normal;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #212121;
+  margin-bottom: 1em;
+}
+
+.tutor-profile-approach {
+  margin: 0;
+  text-transform: normal;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  /* color: #5bcbf0; */
+  color: #212121;
+  margin-bottom: 0em;
+}
+
+.tutor-profile-approach::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 5em;
+  background: #5bcbf0;
+  /* background:#0277BD; */
+  margin: 0.8em auto 0.5em;
+  opacity: 0.5;
+}
+
+.tutor-profile-experience {
+  margin: 0;
+  text-transform: normal;
+  font-size: 1rem;
+  font-weight: 500;
+  /* letter-spacing: 1px; */
+  color: #212121;
+  margin-bottom: 2em;
+}
+
+#tutor-lower-block {
+  padding-top: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+#tutor-lower-block #tutor-lower-left-block {
+  padding-left: 0;
+  padding: right 1rem;
+}
+
+.subject-taught-header {
+  font-size: 1.5rem;
+  /* line-height:1.1; */
+  /* letter-spacing:1px; */
+  color: #212121;
+  font-weight: 800;
+  font-family: Verdana, sans-serif;
+  margin-bottom: 0;
+}
+
+.subject-taught {
+  border-radius: 5px;
+  background: #2e74b6;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 0.3em;
+  margin-bottom: 0;
+  height: fit-content;
+  width: fit-content;
+}
+
+/* .subject-taught:hover{
+	background: #235786;
+  } */
+
+#tutor-lower-block #tutor-lower-right-block {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#tutor-lower-block #tutor-lower-right-block #time-slot-block {
+  padding: 0;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+}
+
+#time-slot-table {
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.time-slot-table-thead-tr {
+  background-color: #2e74b6;
+  color: white;
+  font-weight: 500;
+  font-size: 0.8rem;
+  /* font-family: Verdana; */
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.time-slot-table-thead-tr-th_null {
+  background-color: #0b457c;
+  border: none;
+}
+
+.time-slot-table-thead-tr-th {
+  background-color: #2e74b6;
+  border: none;
+  /* padding : 0;
+	margin: 0;;
+	font-weight: 300;
+	font-size: 0.8rem;
+	font-family: Verdana;
+	color: white;
+	letter-spacing: -1px; */
+}
+
+.time-slot-table-thead-tr-th_shaded {
+  background-color: #2c6daa;
+  border: none;
+  /* padding : 0;
+	margin: 0;;
+	font-weight: 300;
+	font-size: 0.8rem;
+	font-family: Verdana;
+	color: white;
+	letter-spacing: -1px; */
+}
+
+.time-slot-table-tbody-item-row {
+  padding: 0;
+  text-align: center;
+  border: none;
+}
+
+.time-slot-table-first-col {
+  background-color: #4e4e4e;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.8rem;
+  /* font-family: Verdana; */
+  letter-spacing: -1px;
+  color: white;
+  border: none;
+}
+
+.time-slot-table-first-col-shaded {
+  background-color: #313131;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.8rem;
+  /* font-family: Verdana; */
+  letter-spacing: -1px;
+  color: white;
+  border: none;
+}
+
+.time-slot-table-tbody-item {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  font-weight: 200;
+  font-size: 0.8rem;
+  color: #313131;
+  /* font-family: Verdana; */
+}
+
+.time-slot-table-tbody-item-shaded {
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  font-weight: 200;
+  font-size: 0.8rem;
+  color: #313131;
+  /* font-family: Verdana; */
+}
+
+#tutor-lower-block #tutor-lower-right-block #subject-block {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  /* padding:auto; */
+}
+
+#subject-block .subject-name {
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  color: #212121;
+  font-weight: 900;
+  font-family: Verdana, sans-serif;
+  margin-bottom: 0;
+}
+
+#subject-block .subject-type {
+  font-family: Verdana, sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: #5bcbf0;
+  color: #212121;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+#subject-block .subject-type::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 5em;
+  background: #5bcbf0;
+  /* background:#0277BD; */
+  margin: 0.8em auto 0.5em;
+  opacity: 0.3;
+}
+
+/* .subject-description-header{
+	margin:0;
+	text-transform: normal;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: #212121;
+	margin-bottom:1em;
+    margin-top:1em;
+} */
+.subject-description-header {
+  border-radius: 5px;
+  border: 2px solid #2e74b6;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #2e74b6;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+  height: fit-content;
+  width: fit-content;
+}
+
+.subject-description {
+  margin: 0;
+  text-transform: normal;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  /* color: #5bcbf0; */
+  color: #212121;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.subject-info {
+  margin: 0;
+  text-transform: normal;
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  /* color: #5bcbf0; */
+  color: #212121;
+  margin-bottom: 1em;
+}
+
+#subject-image-block {
+  margin-bottom: 1em;
+}
+
+.subject-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  /* border-radius: 50%; */
+  border: 2px solid white;
+}
+
+/* #tutor-lower-block #tutor-lower-right-block #general-info-block{ */
+/* box-shadow: 0 0 20px rgba(0,0,0,0.2); */
+/* } */
+
+#general-ads {
+  margin-top: 1.1em;
+  margin-bottom: 2em;
+  padding-top: 3em;
+  padding-bottom: 2em;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    23deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 32%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+#subject-title-block {
+  display: none;
+}
+.all-class-title {
+  font-size: 1.5rem;
+  /* line-height:1.1; */
+  letter-spacing: 1px;
+  color: #212121;
+  font-weight: 900;
+  font-family: Verdana, sans-serif;
+  /* margin-top: 2rem; */
+  margin-bottom: 0;
+}
+
+#subject-block {
+  display: none;
+}
+
+#tutor-lower-block #tutor-lower-right-block #class-block {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.class-card {
+  margin-left: 0;
+  text-align: left;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#all-subjects-fee-item {
+  text-align: left;
+}
+
+#tutor-lower-block #tutor-lower-right-block .review-title {
+  margin-left: 0;
+  padding-left: 0;
+  font-size: 1.5rem;
+  /* line-height:1.1; */
+  letter-spacing: 1px;
+  color: #212121;
+  font-weight: 900;
+  font-family: Verdana, sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+#tutor-lower-block #tutor-lower-right-block .review-write {
+  margin-top: 2rem;
+  margin-left: 0;
+  padding-left: 0;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: small;
+}
+
+.review-empty {
+  margin: auto;
+}
+
+#tutor-lower-block #tutor-lower-right-block #review-block {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* margin-top: 2rem; */
+  margin: 2rem 0 1rem;
+}
+
+.review-card {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.review-time {
+  margin: 0%;
+  font-size: 1rem;
+  color: #646464;
+}
+
+.review-rating {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: auto;
+}
+
+@media (min-width: 991px) {
+  /* @media(min-width: 575px){ */
+  #tutor-upper-block {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .tutor-profile-sidebar {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 275px;
+    /* background: cornflowerblue; */
+  }
+
+  .tutor-img-box {
+    margin: auto;
+    height: 275px;
+    width: 275px;
+  }
+
+  .tutor-upper-right-profile-main-block {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .tutor-profile-main {
+    /* text-align:left; */
+    text-align: left;
+    margin-left: 0;
+    /* margin-left:2em; */
+  }
+
+  .tutor-profile-approach::after {
+    margin-left: 0;
+  }
+
+  .tutor-profile-name::after {
+    margin-left: 0;
+  }
+
+  .tutor-profile-detail::after {
+    margin-left: 0;
+  }
+
+  #all-subjects-fee-item {
+    text-align: right;
+  }
+}
