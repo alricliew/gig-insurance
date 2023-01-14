@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>GoLearn School</title>
+  <meta name=description content="GoLearn School&trade; is Malaysia #1 teaching platform to run your tuition business and manage your lessons. Start now for Free!">
+  <meta property=og:title content=GoLearn>
+  <meta property=og:site_name content=GoLearn>
+  <meta property=og:type content=website>
+  <meta property=og:url content=https://app.golearn.com.my>
+  <meta property=og:image content=https://app.golearn.com.my/assets/img/icon-apple-touch-180x180.png>
+  <meta property=og:description content="GoLearn School&trade; is Malaysia #1 teaching platform to run your tuition business and manage your lessons. Start now for Free!">
+  <link rel=apple-touch-icon sizes=180x180 href=https://app.golearn.com.my/assets/img/icon-apple-touch-180x180.png>
+  <link rel=icon type=image/png sizes=32x32 href=https://app.golearn.com.my/assets/img/icon-32x32.png>
+  <link rel=icon type=image/png sizes=16x16 href=https://app.golearn.com.my/assets/img/icon-16x16.png>
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <script src="https://kit.fontawesome.com/2bdd669e92.js" crossorigin="anonymous"></script>
+  <!-- Material Kit CSS -->
+  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <!-- Firebase Init -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+  <script src="../assets/js/firebase.js"></script>
+  <link rel="stylesheet" href="../assets/css/intlTelInput.css">
+</head>
+
+<body>
+
+  <div class="wrapper ">
+
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+
+        </div>
+      </nav>
+
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+              <h2>Log In / Sign Up</h2>
+            </div>
+            <div class="col-md-5" style="vertical-align: bottom;margin-top: 1rem; text-align: end;">
+              <p>For Freelancers & Gig Workers</p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-9">
+              <hr>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 ml-auto">
+              <div class="info info-horizontal">
+                <div class="icon icon-rose">
+                  <i class="material-icons" style="color: #fc007e;">paid</i>
+                </div>
+                <div class="description">
+                  <h4 class="info-title">Earn Extra From Freelancing</h4>
+                  <p class="description">
+                    Zero hassle! Apply part-time jobs anywhere, anytime.
+                  </p>
+                </div>
+              </div>
+
+              <div class="info info-horizontal">
+                <div class="icon icon-info" >
+                  <i class="material-icons" style="color: #0d98ba;">verified_user</i>
+                </div>
+                <div class="description">
+                  <h4 class="info-title">Stay Protected</h4>
+                  <p class="description">
+                    Finding a peace of mind? Get the premium work-related accidents protection from our employers.
+                  </p>
+                </div>
+              </div>
+
+              <div class="info info-horizontal">
+                <div class="icon icon-primary">
+                  <i class="material-icons" style="color: #80604d;">account_circle</i>
+                </div>
+                <div class="description">
+                  <h4 class="info-title">From Freelance to Permanant Job</h4>
+                  <p class="description">
+                    Stand a chance to be converted to a permanant role!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-7 mr-auto">
+
+              <div class="social">
+
+                <h4><span> <button class="btn btn-just-icon btn-round btn-primary">
+                  <p>1</p>
+                </button></span> Enter your Phone</h4>
+              </div>
+
+
+              <div class="card-body" style="padding-left: 0; padding-right: 0;">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input id="phone" name="phone" type="tel" class="form-control">
+                    <span id="valid-msg" class="hide" style="color: #42ba96;">✓ Valid</span>
+                    <span id="error-msg" class="hide" style="color: #F32013;"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div id="recaptcha-container"></div>
+                  </div>
+                </div>
+                <div class=""></div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <button id="btnVerify" class="btn btn-primary btn-round" data-toggle="modal" data-target="#verifyModal" data-dismiss="modal" >
+                      Verify
+                    </button>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="social">
+
+                <h4><span> <button class="btn btn-just-icon btn-round btn-primary">
+                  <p>2</p>
+                  </button></span> Verification </h4>
+                  <p>Enter the 6-digit verification code from your SMS.</p>
+              </div>
+
+              <div class="card-body" style="padding-left: 0; padding-right: 0;">
+                <div class="form-group">
+                  <div class="input-group">
+                    <div id="divOuter" style="width: 230px; overflow: hidden;">
+                      <div id="divInner" style="left: 0; position: sticky; ">
+                        <input style="background-color: transparent; border: 0; width: 280px; letter-spacing: 30px;  padding-left: 10px; margin-left:0em; background-position-x: 25px!important;  background-repeat: repeat-x; background-size: 40px 1px;  background-position: bottom; background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);" type="text" id="verificationCode" maxlength="6" placeholder="">
+                      </div>
+                    </div>
+
+                    <!-- <div id="divOuter" style="width: 250px; overflow: hidden;">
+                      <div id="divInner" style="left: 0; position: sticky; ">
+                        <input style="background-color: transparent; border: 0; width: 280px; letter-spacing: 31px;  padding-left: 20px; margin-left:0em; background-position-x: 0;  background-repeat: repeat-x;background-size: 40px 1px;  background-position: bottom; background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);" type="text" id="verificationCode" maxlength="6" placeholder="">
+                      </div>
+                    </div> -->
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <!-- <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="material-icons">email</i></div>
+                    </div> -->
+                    <button type="button" class="btn btn-primary btn-round" id="btnLogin">Confirm and Login</button>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                <h4 class="card-title">Login  |  Create Account</h4>
+                </div>
+                <div class="card-body">
+
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="row">
+            <div class="col-md-9">
+              <button class="btn btn-round" data-toggle="modal" data-target="#signupModal">
+                <i class="material-icons">assignment</i>
+                Login
+              </button>
+            </div>
+          </div> -->
+		  </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PLUGINS USED -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <script src="../assets/js/plugins/intlTelInput/intlTelInput.js"></script>
+
+  <!-- 2023 RHB Hackathon Resources -->
+  <script src="js/auth.js" type="text/javascript"></script>
+  <script src="js/const.js" type="text/javascript"></script>
+  <script src="js/core.js" type="text/javascript"></script>
+
+  <script>
+
+    var uid;
+
+    // Auto Login
+    firebase.auth().onAuthStateChanged(function(user){
+
+      if(user){
+        uid = firebase.auth().currentUser.uid
+
+
+        checkIfUserExist(uid);
+
+        // This is a hack to prevent auto signin for new user.
+        // If the phone fill is empty and user exist, auto signin.
+        // if (itiPhone.getNumber() == null || itiPhone.getNumber() == "")
+        //   window.location.href = "./"
+        // else {
+        //   // Do nothing
+        // }
+      }else{
+        // Do nothing
+        console.log("User not logged in.")
+      }
+    });
+
+
+    // Check if a user exist in db.
+    // Rationale: Some user may login to client portal, and they switch to school portal.
+    // They are by default logged in, however do not have school profile. Auto login will
+    // cause undefined page views in school portal. So, enforce login to create the profile
+    // first
+    function checkIfUserExist(uid){
+
+      let docRef = db.collection("user").doc(uid);
+
+      docRef.get().then((doc) => {
+        if (doc.exists) {
+          // Auto login
+          console.log("User logged in, profile exist: "+uid)
+
+          // window.location.href = "./"
+        }
+        else {
+          console.log("User logged in, but profile does not exist: "+uid)
+
+          // User logged in, but no profile found.
+          // Do not autologin
+        }
+
+      });
+
+    }
+
+    // Clear USER_OBJ session storage. So after login, user update USER_OBJ
+    // with latest value.
+    if (JSON.parse(sessionStorage.getItem(USER_OBJ)) != null ){
+      // Although user exist, but the storage is null. Reload.
+      sessionStorage.removeItem(USER_OBJ);
+    }
+
+  </script>
+
+  <script>
+    var input = document.querySelector("#phone");
+    var itiPhone = intlTelInput(input, {
+      // allowDropdown: false,
+      autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["my"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      nationalMode: false,
+      // onlyCountries: ['MY', 'SG', 'TH', 'ID', 'VN', 'PH', 'BN', 'US', 'GB', 'SA'],
+      // placeholderNumberType: "MOBILE",
+      preferredCountries: ['MY', 'SG'],
+      separateDialCode: true,
+      utilsScript: "js/utils.js",
+    });
+
+    var errorMsg = document.querySelector("#error-msg");
+    var validMsg = document.querySelector("#valid-msg");
+
+    // here, the index maps to the error code returned from getValidationError - see readme
+    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
+    var reset = function() {
+      input.classList.remove("error");
+      errorMsg.innerHTML = "";
+      errorMsg.classList.add("hide");
+      validMsg.classList.add("hide");
+    };
+
+    // on blur: validate
+    input.addEventListener('blur', function() {
+      reset();
+      console.log(itiPhone.getNumber());
+      if (input.value.trim()) {
+        if (itiPhone.isValidNumber()) {
+          validMsg.classList.remove("hide");
+        } else {
+          input.classList.add("error");
+          var errorCode = itiPhone.getValidationError();
+          errorMsg.innerHTML = errorMap[errorCode];
+          errorMsg.classList.remove("hide");
+        }
+      }
+    });
+    // on keyup / change flag: reset
+    input.addEventListener('change', reset);
+    input.addEventListener('keyup', reset);
+
+  </script>
+
+  <script>
+    $( document ).ready(function() {
+
+      //Disable the step 1 button
+      document.getElementById("btnVerify").setAttribute("style", "background-color: #c1c1c1");
+      document.getElementById("btnVerify").style.cursor='not-allowed';
+      document.getElementById("btnVerify").style.pointerEvents='none';
+
+      // document.getElementById("btnVerify").disabled = true;
+
+      //Disable the step 2 button
+      document.getElementById("btnLogin").setAttribute("style", "background-color: #c1c1c1");
+      document.getElementById("btnLogin").style.cursor='not-allowed';
+      // document.getElementById("btnLogin").disabled = true;
+
+
+      $('#btnVerify').on('click', function(){
+        phoneAuth();
+        document.getElementById("btnVerify").setAttribute("style", "background-color: #c1c1c1; pointer-event: none;");
+        // document.getElementById("btnVerify").disabled = true;
+        document.getElementById("phone").setAttribute("style", "background-color: #c1c1c1; pointer-event: none");
+        // document.getElementById("phone").disabled = true;
+
+
+
+      });
+
+
+      $('#btnLogin').on('click', function(){
+
+        document.getElementById("btnLogin").setAttribute("disabled", true);
+        document.getElementById("btnLogin").textContent = 'Please wait. Checking ... ';
+
+
+        codeverify();
+      });
+
+
+    });
+
+
+  </script>
+</body>
+
+</html>

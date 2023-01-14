@@ -1,0 +1,2165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>GoLearn School</title>
+  <meta name=description content="GoLearn School&trade; is Malaysia #1 teaching platform to run your tuition business and manage your lessons. Start now for Free!">
+  <meta property=og:title content="GoLearn School">
+  <meta property=og:site_name content="GoLearn School">
+  <meta property=og:type content=website>
+  <meta property=og:url content=https://app.golearn.com.my/school/ >
+  <meta property=og:image content=https://app.golearn.com.my/assets/img/icon-apple-touch-180x180.png>
+  <meta property=og:description content="GoLearn School&trade; is Malaysia #1 teaching platform to run your tuition business and manage your lessons. Start now for Free!">
+  <link rel=apple-touch-icon sizes=180x180 href=https://app.golearn.com.my/assets/img/icon-apple-touch-180x180.png>
+  <link rel=icon type=image/png sizes=32x32 href=https://app.golearn.com.my/assets/img/icon-32x32.png>
+  <link rel=icon type=image/png sizes=16x16 href=https://app.golearn.com.my/assets/img/icon-16x16.png>
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <script src="https://kit.fontawesome.com/2bdd669e92.js" crossorigin="anonymous"></script>
+  <!-- Material Kit CSS -->
+  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <!-- Tutor specific css -->
+  <link href="../assets/css/tutor.css" rel="stylesheet" />
+    <!-- Tutor Portal specific CSS -->
+  <link href="../assets/css/tutor-portal.css" rel="stylesheet" />
+  <!-- Firebase Init -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+  <script src="../assets/js/firebase.js"></script>
+
+  <style>
+    .multisteps-form__progress {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+
+    .multisteps-form__progress-btn {
+      transition-property: all;
+      transition-duration: 0.15s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+      position: relative;
+      padding-top: 20px;
+      color: #2B6AA6;
+      text-indent: 0px;
+      border: none;
+      background-color: transparent;
+      outline: none !important;
+      cursor: pointer;
+    }
+    @media (min-width: 500px) {
+      .multisteps-form__progress-btn {
+        text-indent: 0px;
+      }
+    }
+    .multisteps-form__progress-btn:before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: block;
+      width: 13px;
+      height: 13px;
+      content: "";
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      transition: all 0.15s linear 0s,
+        -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+      transition: all 0.15s linear 0s,
+        transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+      transition: all 0.15s linear 0s,
+        transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s,
+        -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      background-color: #2e74b6;
+      box-sizing: border-box;
+      z-index: 3;
+    }
+    .multisteps-form__progress-btn:after {
+      position: absolute;
+      top: 5px;
+      left: calc(-50% - 13px / 2);
+      transition-property: all;
+      transition-duration: 0.15s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+      display: block;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background-color: currentColor;
+      z-index: 1;
+    }
+    .multisteps-form__progress-btn:first-child:after {
+      display: none;
+    }
+    .multisteps-form__progress-btn.js-active {
+      color: #fff;
+    }
+    .multisteps-form__progress-btn.js-active:before {
+      -webkit-transform: translateX(-50%) scale(1.2);
+      transform: translateX(-50%) scale(1.2);
+      background-color: currentColor;
+    }
+
+    .multisteps-form__form {
+      position: relative;
+    }
+
+    .multisteps-form__panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .multisteps-form__panel.js-active {
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+    }
+    .multisteps-form__panel[data-animation="scaleOut"] {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    .multisteps-form__panel[data-animation="scaleOut"].js-active {
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    .multisteps-form__panel[data-animation="slideHorz"] {
+      left: 50px;
+    }
+    .multisteps-form__panel[data-animation="slideHorz"].js-active {
+      transition-property: all;
+      transition-duration: 0.25s;
+      transition-timing-function: cubic-bezier(0.2, 1.13, 0.38, 1.43);
+      transition-delay: 0s;
+      left: 0;
+    }
+    .multisteps-form__panel[data-animation="slideVert"] {
+      top: 30px;
+    }
+    .multisteps-form__panel[data-animation="slideVert"].js-active {
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+      top: 0;
+    }
+    .multisteps-form__panel[data-animation="fadeIn"].js-active {
+      transition-property: all;
+      transition-duration: 0.3s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+    }
+    .multisteps-form__panel[data-animation="scaleIn"] {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    .multisteps-form__panel[data-animation="scaleIn"].js-active {
+      transition-property: all;
+      transition-duration: 0.2s;
+      transition-timing-function: linear;
+      transition-delay: 0s;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  </style>
+
+  <!-- Shimmering -->
+  <style>
+    .card-shimmer-wrapper {
+      width: 0px;
+      animation: fullView 0.5s forwards cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    }
+
+    .br {
+      border-radius: 8px;
+    }
+
+    .w30 {
+      width: 30%;
+    }
+
+    .w50 {
+      width: 50%;
+    }
+
+    .w80 {
+      width: 80%;
+    }
+
+    .profilePic {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    .comment {
+      height: 10px;
+      background: #777;
+      margin-top: 15px;
+    }
+
+    @keyframes fullView {
+      100% {
+        width: 100%;
+      }
+    }
+
+    .animate {
+      animation: shimmer 2s infinite linear;
+      background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+      background-size: 1000px 100%;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+  </style>
+  <!-- Tooltips -->
+  <style>
+    .tooltip.show {
+      opacity: 1;
+    }
+
+    .tooltip-inner {
+      color: #32CD32;
+      background-color: #f2fff2;
+      /* box-shadow: 0px 0px 4px black; */
+      opacity: 1 !important;
+      border: solid 2px #32CD32;
+      border-radius: 30px;
+    }
+
+    .tooltip.bs-tooltip-right .arrow:before {
+      border-right-color: #32CD32 !important;
+    }
+
+    .tooltip.bs-tooltip-left .arrow:before {
+    border-left-color: #32CD32 !important;
+    }
+
+    .tooltip.bs-tooltip-bottom .arrow:before {
+    border-bottom-color: #32CD32 !important;
+    }
+
+    .tooltip.bs-tooltip-top .arrow:before {
+    border-top-color: #32CD32 !important;
+    }
+  </style>
+  <!-- notification -->
+  <style>
+    .notification-stand-alone {
+      position: absolute;
+      top: 5px;
+      border: 1px solid #fff;
+      right: -22px;
+      font-size: 9px;
+      background: #f44336;
+      color: #ffffff;
+      min-width: 20px;
+      padding: 0px 5px;
+      height: 20px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 19px;
+      vertical-align: middle;
+      display: block;
+    }
+    .request-label{
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 9px;
+      font-weight: 400;
+      background: #c1e1d2;
+      color: #21896c;
+      min-width: 20px;
+      padding: 0px 10px;
+      height: 20px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 19px;
+      vertical-align: middle;
+      display: block;
+    }
+    .edit-label{
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      /* font-size: 9px; */
+      font-weight: 400;
+      /* background: #c1e1d2; */
+      /* color: #21896c; */
+      min-width: 20px;
+      padding: 0px 10px;
+      height: 20px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 19px;
+      vertical-align: middle;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper ">
+
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-3.jpg">
+      <div class="logo">
+        <a href="./" class="simple-text logo-mini" style="padding: 0.5rem">
+			    <img src="../assets/img/golearn-school-logo.svg" style="width: 200px; height: auto;" alt=""></img>
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="./">
+              <i class="far fa-chart-bar fa-fw nav-icon"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="job/">
+              <i class="far fa-lightbulb fa-fw nav-icon"></i>
+              <p>Jobs</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <!-- <a class="navbar-brand" href="javascript:;">Dashboard</a> -->
+            <div class="form-group" >
+              <!-- <span class="" style="font-size: smaller; font-weight: 300; color: gray; margin-bottom: 0;">State</span> -->
+              <select class="custom-select" id="reqEditState">
+                <option value="" selected>All Companies</option>
+                <option value="">Company ABC Sdn Bhd</option>
+                <option value="">BS Supermarket</option>
+              </select>
+            </div>
+
+          </div>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <!-- Put empty placeholder here -->
+            </form>
+
+            <ul class="navbar-nav">
+              <li class="nav-item" id="activationNavItem">
+                <a href="javascript:;" class="btn btn-primary btn-round" data-toggle="modal" data-target="#checkInModal" onclick="checkInFunction()"  >
+                  <i class="material-icons" style="color: white;">where_to_vote</i>
+                  Check-In
+                </a>
+
+              </li>
+              <li class="nav-item">
+                <a class="navbar-brand" href="javascript:;">
+                   Hi <span id="user"></span> !
+                </a>
+              </li>
+
+			  			<li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="#">Edit Profile</a>
+                  <a class="dropdown-item" href="javascript:;" data-toggle="modal" data-target="#signOutModal" onclick="signOutFunction()" id="btn-logout">Log out</a>
+
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+
+      <!-- Modal Start -->
+
+      <!-- View Profile modal -->
+      <div class="row">
+        <div class="modal fade" id="viewProfileModal" tabindex="-1" role="dialog" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
+          <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="viewProfileModalLabel">My Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnViewProfileClose1">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="viewProfileModalBody">
+                <div class="row">
+                  <div class="col-md-12" id="tutorNull">
+
+                    <div class="card card-profile">
+                      <div class="card-avatar" style="height: 150px; width: 150px;">
+                        <a href="javascript:;">
+                          <img class="img" id="tutorImgUrlPreview" style="height: 100%; width:100%; object-fit: cover; border-radius: 50%" src="../assets/img/empty-photo.png" />
+                        </a>
+                      </div>
+                      <div class="card-body">
+                        <h6 class="card-category text-gray" id="tutorGenderAgeYearsExperience">Male | 2 years old</h6>
+                        <h4 class="card-title" id="tutorNamePreview"  style="font-size: 1.5rem;">Boo Boo</h4>
+
+                        <h5 class="card-category" style="font-size: 0.9rem; font-weight: 600; color: #474747;" >Education</h5>
+                        <p class="card-description" id="tutorEducation">
+                          University of Bear
+                        </p>
+                        <h5 class="card-category" style="font-size: 0.9rem; font-weight: 600; color: #474747;" >Tutoring Approach</h5>
+
+                        <p class="card-description" id="tutorTutoringApproachPreview">
+                          I am passionate about teaching and love little teddies.
+                        </p>
+
+                        <h5 class="card-category" style="font-size: 0.9rem; font-weight: 600; color: #474747;" >Teaching Experience</h5>
+
+                        <p class="card-description" id="tutorTutoringExperiencePreview">
+                          I have 9 months of teaching experience. Hire me starting from 2 cans of honey 🍯🍯.
+                        </p>
+
+                        <a href="javascript:;" class="btn btn-primary btn-round" id="btnIWantThisTutor"  style="background-color: grey; pointer-events: none;">I want this tutor !</a>
+                      </div>
+                      <!-- <button>👆 This is what your profile looks like to parents.</button> -->
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnViewProfileModalUpdate"></button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading Modal -->
+      <div class="row">
+        <div class="modal fade" tabindex="-1" role="dialog" id="loadingModal" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered text-center" role="document">
+            <div class="container-fluid">
+              <div class="row d-flex">
+                <span class="fa fa-spinner fa-spin fa-5x w-100" style="color: #fff ;"></span>
+                <div class="col align-self-center">
+                  <!-- <h5 class="modal-title" style="color: white;">Generating invoice in progress. </h5> -->
+                  <!-- <h5 class="modal-title" style="color: white;"> Please do not close this window.</h5> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Check-In modal -->
+      <div class="row">
+        <div class="modal fade" id="checkInModal" tabindex="-1" role="dialog" aria-labelledby="checkInModalLabel" aria-hidden="true">
+          <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="checkInModalLabel">Check-In?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btncheckInModalClose1">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="checkInModalBody">
+
+                <div class="row" >
+                  <div class="col-md-12">
+                    <div class="form-group" >
+                      <select class="custom-select" id="checkInSelect">
+                        <option value="company-abc-sdn-bhd">Company ABC Sdn Bhd</option>
+                        <option value="bs-supermarket">BS Supermarket</option>
+                      </select>
+                    </div>
+
+
+                    <!-- <div class="form-check form-check-radio">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="reqEditStatus" id="reqEditStatusNew" value="option1" data-compulsory="false" checked>
+                        Company ABC Sdn Bhd
+                        <span class="circle">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="reqEditStatus" id="reqEditStatusNoResponse" value="option1" data-compulsory="false" >
+                        BS Supermarket
+                        <span class="circle">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div> -->
+                  </div>
+
+                  <div class="col-md-12">
+                    <p>Check-In Time: 12/1/2023 8:44 AM</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncheckInModalClose2">Not Now</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btncheckInModalUpdate"  onclick="checkInFunction()">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sign-out modal -->
+      <div class="row">
+        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+          <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="signOutLabel">Logging Out</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="signOutModalBody">
+                Are you sure you want to continue?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSignOutModalUpdateRemoved">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal End -->
+
+      <div class="content">
+        <div class="container-fluid">
+          <!-- your content here -->
+
+          <!-- Profile Section -->
+          <div class="row">
+
+            <!-- RIGHT -->
+            <div class="col-md-6">
+            <!-- Request -->
+              <div class="row" >
+                <div class="col-md-12" >
+
+                  <div >
+                    <h3>
+                      My Check-In
+
+                    </h3>
+
+                  </div>
+
+                  <div class="row" id="requestBody">
+
+                    <div class="col-md-12" id="noRequestPlaceholder" style="display: none;">
+                      <p>No request found!</p>
+                    </div>
+
+                    <!-- <div class="col-md-12" style="padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
+
+                      <div class="review-card bg-white" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); cursor: default;">
+
+                        <span class="request-label">RM 15 / hour</span>
+
+                        <div class="row" style="margin-left: 12px; margin-right: 12px; display: inline-flex;">
+                          <div style="height: 30px;width: 30px; display: inline-block; position: relative; overflow: hidden; border-radius: 50%;">
+                            <img style="height: 100%;width: 100%; object-fit: cover;" src="data:image/png;base64,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">
+                          </div>
+                          <p class="align-self-center" style="font-weight: 400; margin-left: 12px; margin-bottom: 0;">Company ABC Sdn Bhd </p>
+
+                          <p class="align-self-center" style="margin-left: 12px;  margin-bottom: 0;">  Warehouse Packer  </p>
+
+                        </div>
+
+                        <div class="row" style="margin: 8px 12px 0 12px;">
+                          <p style="margin: 0; font-style: italic; font-size: small;">Check-In:  12/1/2023 8:31PM
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12" style="padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
+
+                      <div class="review-card bg-white" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); cursor: default;">
+
+                        <span class="request-label">RM 80 / day</span>
+
+                        <div class="row" style="margin-left: 12px; margin-right: 12px; display: inline-flex;">
+                          <div style="height: 30px;width: 30px; display: inline-block; position: relative; overflow: hidden; border-radius: 50%;">
+                            <img style="height: 100%;width: 100%; object-fit: cover;" src="data:image/png;base64,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">
+                          </div>
+                          <p class="align-self-center" style="font-weight: 400; margin-left: 12px; margin-bottom: 0;">BS Supermarket </p>
+
+                          <p class="align-self-center" style="margin-left: 12px;  margin-bottom: 0;">  Partime Cashier  </p>
+
+                        </div>
+                        <div class="row" style="margin: 8px 12px 0 12px;">
+                          <p style="margin: 0; font-style: italic; font-size: small;">Check-In:  12/1/2023 9.01AM
+                        </div>
+                      </div>
+                    </div> -->
+
+
+                  </div>
+
+                  <!-- Loading block -->
+                  <div class="row d-none" id="card-load">
+                    <div class="col-md-12" style="padding-left: 5px; padding-right: 5px;">
+                      <div class="card br"  style="padding: 12px 20px; margin-top: 0.2rem; border-radius: 12px;">
+                        <div class="card-shimmer-wrapper">
+                          <div class="comment br animate"></div>
+                          <div class="comment br animate"></div>
+                          <div class="comment br animate w50"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-12" >
+                      <a class="btn btn-sm btn-outline-primary btn-round" id="btnRequestLoadMore" style="visibility: hidden;">Load More <i class="material-icons" style="color: #2e74b6; padding-bottom: 0.2em;">expand_more</i></a>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Level up -->
+              <div class="card" style="display: none;">
+                <div class="card-body"  style="background: linear-gradient(23deg,
+                #2b35b8,
+                #5b86e5 32%,
+                #36d1dc); border-radius: 8px;" >
+                  <h3 style="color: #fff">
+                    Level Up! More Visibility & Students!
+                  </h3>
+                  <div class="row" >
+                    <div class="col-12 col-lg-12 ml-auto mr-auto mb-4" style="padding-left: 0px; padding-right: 0px; margin-bottom: 0.5rem!important; margin-top: 0.5rem">
+                      <div class="multisteps-form__progress">
+                        <button class="multisteps-form__progress-btn js-active" type="button" title="Login">New</button>
+                        <button class="multisteps-form__progress-btn text-nowrap" type="button" title="Student Info">Experienced</button>
+                        <button class="multisteps-form__progress-btn" type="button" title="Student Info">Pro</button>
+                        <button class="multisteps-form__progress-btn text-nowrap" type="button" title="Guardian Info">Premium</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="multisteps-form" >
+                    <div class="row">
+                      <div class="col-12">
+                        <form class="multisteps-form__form">
+                          <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                            <h5 class="multisteps-form__title" style="color: #2e74b6; font-weight: 400;">New Tutor</h5>
+                            <div class="multisteps-form__content">
+                              <p style="margin-bottom: 4px;">Welcome! Complete your profile today to get more rewards!</p>
+                              <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl1Pic" style="color:red; font-size: small;"></i></span> Upload a profile picture</p>
+                              <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl1Qualification" style="color:red; font-size: small;"></i></span> Add a qualification</p>
+                              <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl1ApproachExp" style="color:red; font-size: small;"></i></span> Add teaching approach & experience </p>
+                              <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl1SubjectArea" style="color:red; font-size: small;"></i></span> Add subjects & teaching places</p>
+                            </div>
+                          </div>
+                          <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                            <h5 class="multisteps-form__title" style="color: #2e74b6; font-weight: 400;"><img style="height: 30px; width:30px;" src="../assets/img/badge-experienced.png"/> Experienced Tutor </h5>
+                            <div class="multisteps-form__content">
+                              <p style="margin-bottom: 4px;">One more step to Pro! Get more positive reviews from your clients and connections.</p>
+                              <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl2Review" style="color:red; font-size: small;"></i></span> <span id="lvl2ReviewTxt">0/5 Reviews</span></p>
+                              <!-- <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl2Class" style="color:red; font-size: small;"></i></span> <span id="lvl2ClassTxt">0</span>/1 Class</p> -->
+                              <!-- <p style="font-weight: 300; margin-bottom: 4px;"><span><i class="fas fa-minus-circle fa-fw" id="lvl2Student" style="color:red; font-size: small;"></i></span> <span id="lvl2StudentTxt">0</span>/1 Student</p> -->
+                            </div>
+                          </div>
+                          <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                            <h5 class="multisteps-form__title" style="color: #2e74b6; font-weight: 400;"><img style="height: 30px; width:30px;" src="../assets/img/badge-pro.png"/> Pro Tutor </h5>
+                            <div class="multisteps-form__content">
+                              <p style="margin-bottom: 4px;">Congratulation! You are among the top 4%! <br>
+                                <a href="https://golearn.com.my/pricing/" target="_blank" style="font-weight: bold;">Upgrade to Premium</a> Today.
+                              </p>
+                              <p>
+                                <span><i class="fas fa-eye fa-fw" style="color:green; font-size: small;"></i></span> x12 Visibility<br>
+                                <span><i class="fas fa-user-graduate fa-fw" style="color:green; font-size: small;"></i></span> More Students<br>
+                                <span><i class="fas fa-briefcase fa-fw" style="color:green; font-size: small;"></i></span> More Tutoring Jobs<br>
+                                <span><i class="fas fa-chalkboard fa-fw" style="color:green; font-size: small;"></i></span> Premium GoLearn School&trade; Platform
+                              </p>
+                            </div>
+                          </div>
+                          <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn" >
+                            <h5 class="multisteps-form__title" style="color: #2e74b6; font-weight: 400;"><img style="height: 30px; width:30px;" src="../assets/img/badge-premium.png"/> Premium </h5>
+                            <!-- <p style="margin-bottom: 4px;">Welcome Premium Tutor! </p> -->
+                            <div class="multisteps-form__content" >
+                              <p style="margin-bottom: 4px;">Welcome Premium Tutor! </p>
+                              <p>
+                                <span><i class="fas fa-eye fa-fw" style="color:green; font-size: small;"></i></span> x12 Visibility<br>
+                                <span><i class="fas fa-user-graduate fa-fw" style="color:green; font-size: small;"></i></span> More Students<br>
+                                <span><i class="fas fa-briefcase fa-fw" style="color:green; font-size: small;"></i></span> More Tutoring Jobs<br>
+                                <span><i class="fas fa-chalkboard fa-fw" style="color:green; font-size: small;"></i></span> Premium GoLearn School&trade; Platform
+                              </p>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+            <!-- Revenue column -->
+            <div class="col-md-6">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                  <!-- <div class="ct-chart" id="dailySalesChart"></div> -->
+                  <canvas id="monthlyRevenueChart" width="400" height="400"></canvas>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Monthly Activities</h4>
+                  <p class="card-category" id="monthRevenueText">
+                    <!-- <span class="text-success" id="monthRevenueText"><i class="fa fa-long-arrow-down"></i> 0% </span> increase in this month sales.</p> -->
+                </div>
+                <!-- <div class="card-footer">
+                  <div class="stats align-self-center" id="monthRevenueLastUpdate">
+                    <i class="material-icons">update</i>
+                  </div>
+                  <div class="stats">
+                    <span style="cursor: pointer;" onclick="window.location = 'report/'; ">
+                      More Insights
+                    </span>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row d-none">
+
+            <!-- Card -->
+            <div class="col-md-3">
+              <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                  <div class="card-icon">
+                    <i class="fas fa-user-graduate fa-fw"></i>
+                  </div>
+                  <p class="card-category">Students</p>
+                  <h3 class="card-title" style="font-weight: bold;">
+                    <span id="studentNum">0</span>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <!-- Back button -->
+                  <!-- <div class="stats">
+                    <div class="row d-flex" style="padding: 0; margin: 0;">
+                      <div class="p-2" style="padding: 0!important;">
+                        <i class="material-icons">update</i>
+                      </div>
+                      <div class="p-2" style="padding: 0!important;">
+                        <span id="studentLastEdit">-</span>
+                      </div>
+                      <div class="ml-auto p-2" style="padding: 0!important;">
+                        <i class="material-icons">update</i>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <span id="studentLastEdit">-</span>
+                  </div>
+                  <div class="stats">
+                    <span style="cursor: pointer;" onclick="reloadStudentNum();">
+                      <i class="material-icons">refresh</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-3">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="fas fa-chalkboard fa-fw"></i>
+                  </div>
+                  <p class="card-category">Classes</p>
+                  <h3 class="card-title" style="font-weight: bold;">
+                    <span id="classNum">0</span>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <span id="classLastEdit">-</span>
+                  </div>
+                  <div class="stats">
+                    <span style="cursor: pointer;" onclick="reloadClassNum();">
+                      <i class="material-icons">refresh</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-icon">
+                    <i class="fas fa-chalkboard-teacher fa-fw"></i>
+                  </div>
+                  <p class="card-category">Teachers</p>
+                  <h3 class="card-title" style="font-weight: bold;">
+                    <span id="tutorNum">0</span>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i>
+                    <span id="tutorLastEdit">-</span>
+                  </div>
+                  <div class="stats">
+                    <span style="cursor: pointer;" onclick="reloadTutorNum();">
+                      <i class="material-icons">refresh</i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="fas fa-user-cog fa-fw"></i>
+                  </div>
+                  <p class="card-category">Profile Completed</p>
+                  <h3 class="card-title" style="font-weight: bold; padding: 0 !important; margin: 0 !important;">
+
+                    <span id="profilePercentageNum" style="padding: 0; margin: 0;">0%</span>
+                    <!-- <span style="font-weight: 300; font-size: x-small; padding: 0; margin: 0;">Done</span> -->
+
+                    <!-- <span class="tooltiptext-trigger">?
+                      <span class="tooltiptext-general" style="left: 15%; bottom: 50%; width: 200px;">
+                        <h6 >Profile</h6>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profilePic" style="color:red; font-size: small;"></i></span> Upload a profile picture</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileBasic" style="color:red; font-size: small;"></i></span> Update basic details</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileQualification" style="color:red; font-size: small;"></i></span> Add qualification</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileApproach" style="color:red; font-size: small;"></i></span> Add teaching approach </p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileExp" style="color:red; font-size: small;"></i></span> Add past experience</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileSubject" style="color:red; font-size: small;"></i></span> Preferred subjects</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileArea" style="color:red; font-size: small;"></i></span> Teaching places</p>
+                      </span>
+                    </span> -->
+                  </h3>
+                </div>
+                <!-- <div class="card-body" style="text-align: left;">
+                  <h4 class="card-title">
+                    Profile
+                  </h4>
+                  <h3 class="card-title" style="font-weight: bold;">
+                    <span id="profilePercentageNum" >0%</span>
+                    <span style="font-weight: 300; font-size: small;">Completed</span>
+                    <span class="tooltiptext-trigger">?
+                      <span class="tooltiptext-general" style="left: 15%; bottom: 50%; width: 200px">
+                        <h6>Profile</h6>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profilePic" style="color:red"></i></span> Upload a profile picture</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileBasic" style="color:red"></i></span> Update basic details</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileQualification" style="color:red"></i></span> Add qualification</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileApproach" style="color:red"></i></span> Add teaching approach </p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileExp" style="color:red"></i></span> Add past experience</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileSubject" style="color:red"></i></span> Preferred subjects</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileArea" style="color:red"></i></span> Teaching places</p>
+                        <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profilePublicCourse" style="color:red"></i></span> Add public courses</p>
+                      </span>
+                    </span>
+                  </h3>
+                </div> -->
+                <div class="card-footer">
+                  <a href="javascript:;" data-toggle="modal" data-target="#viewProfileModal" class="btn btn-primary btn-round btn-sm" style="margin: 0; padding-top: 0.2rem; padding-bottom: 0.2rem; display: none;">Preview</a>
+                  <span class="tooltiptext-trigger"  style="background-color: transparent; color: #2e74b6; font-weight: bold; font-size: small;">?
+                    <span class="tooltiptext-general" style="left: 40%; bottom: 30%; width: 200px;">
+                      <h6 >Profile</h6>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profilePic" style="color:red; font-size: small;"></i></span> Upload a profile picture</p>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileBasic" style="color:red; font-size: small;"></i></span> Update basic details</p>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileQualification" style="color:red; font-size: small;"></i></span> Add qualification</p>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileApproach" style="color:red; font-size: small;"></i></span> Add teaching approach </p>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileExp" style="color:red; font-size: small;"></i></span> Add past experience</p>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileSubject" style="color:red; font-size: small;"></i></span> Preferred subjects</p>
+                      <p style="font-weight: 300;"><span><i class="fas fa-minus-circle fa-fw" id="profileArea" style="color:red; font-size: small;"></i></span> Teaching places</p>
+                    </span>
+                  </span>
+
+                </div>
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+		    </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- fixed-plugin -->
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+				<i class="material-icons" style="font-size: 36px; padding: 0.2em; color: white;">where_to_vote</i>
+      </a>
+      <ul class="dropdown-menu">
+		    <br>
+        <li class="header-title">Checked In?</li>
+
+        <!-- <li>
+          <div class="row" style="width: 100vw;">
+            <div class="col-md-12">
+              <div class="form-check form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="reqEditStatus" id="reqEditStatusNew" value="option1" data-compulsory="false" checked>
+                  Company ABC Sdn Bhd
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="reqEditStatus" id="reqEditStatusNoResponse" value="option1" data-compulsory="false" >
+                  BS Supermarket
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </li> -->
+        <li class="button-container">
+
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkInModal" onclick="checkInFunction()">Check-In</a>
+        </li>
+
+        <li class="header-title">Report Violation? </li>
+        <li class="button-container">
+          <a href="#" target="_blank" class="btn btn-warning btn-block">
+            Let us know
+          </a>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Plugin for the momentJs  -->
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <!-- Chartist JS -->
+  <!-- <script src="assets/js/plugins/chartist.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <!-- Common constants -->
+  <!-- <script src="../assets/js/common.js" type="text/javascript"></script> -->
+  <script src="../assets/js/const.js" type="text/javascript"></script>
+  <!-- Global Var -->
+  <script src="../assets/js/globalvar.js" type="text/javascript"></script>
+  <!-- Tutor Core -->
+  <!-- <script src="../assets/js/tutor-core.js" type="text/javascript"></script> -->
+  <script src="js/const.js" type="text/javascript"></script>
+  <script src="js/core.js" type="text/javascript"></script>
+
+   <!-- Chart -->
+   <script>
+
+    // Monthly Revenue
+    const month = MyMonthAbr;
+    const labels = month;
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Monthly Revenue',
+        data: [10, 12, 25, 28, 20, 24, 25],
+        // data: [],
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        borderWidth: 1,
+
+      }]
+    };
+
+    const option = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: false,
+          text: 'Chart.js Bar Chart'
+        }
+      },
+      scales: {
+
+        x: {
+          ticks: {
+            color: ['rgba(255, 255, 255, 0.9)'],
+          },
+          grid:{
+            display: true,
+            color: function(context) {
+
+              if (context.tick == null ){
+                return 'transparent';
+              }else if (context.tick.value == 0) {
+                return 'rgba(255, 255, 255, 0.9)';
+              } else if (context.tick.value > 0) {
+                return 'transparent';
+              }
+            }
+
+          },
+          beginAtZero: true,
+        },
+        y: {
+          ticks: {
+            color: 'rgba(255, 255, 255, 0.9)',
+          },
+          grid:{
+            display: true,
+            color: function(context) {
+
+              if (context.tick == null ){
+                return 'rgba(255, 255, 255, 0.3)';
+              }else if (context.tick.value == 0) {
+                return 'rgba(255, 255, 255, 1)';
+              } else if (context.tick.value > 0) {
+                return 'rgba(255, 255, 255, 0.3)';
+              }
+            }
+          },
+          beginAtZero: true,
+        },
+      }
+    }
+
+    const config = {
+      type: 'bar',
+      data: data,
+      options: option,
+    };
+
+    const ctx = document.getElementById('monthlyRevenueChart').getContext('2d');
+    const monthlyRevenueChart = new Chart(ctx, config);
+
+
+  </script>
+
+  <!-- Multiform-specific script -->
+  <script>
+    //DOM elements
+    const DOMstrings = {
+      stepsBtnClass: 'multisteps-form__progress-btn',
+      stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
+      stepsBar: document.querySelector('.multisteps-form__progress'),
+      stepsForm: document.querySelector('.multisteps-form__form'),
+      stepsFormTextareas: document.querySelectorAll('.multisteps-form__textarea'),
+      stepFormPanelClass: 'multisteps-form__panel',
+      stepFormPanels: document.querySelectorAll('.multisteps-form__panel'),
+      stepPrevBtnClass: 'js-btn-prev',
+      stepNextBtnClass: 'js-btn-next',
+      stepSendBtnClass: 'js-btn-send' };
+
+
+    //remove class from a set of items
+    const removeClasses = (elemSet, className) => {
+
+      elemSet.forEach(elem => {
+
+        elem.classList.remove(className);
+
+      });
+
+    };
+
+    //return exect parent node of the element
+    const findParent = (elem, parentClass) => {
+
+      let currentNode = elem;
+
+      while (!currentNode.classList.contains(parentClass)) {
+        currentNode = currentNode.parentNode;
+      }
+
+      return currentNode;
+
+    };
+
+    //get active button step number
+    const getActiveStep = elem => {
+      return Array.from(DOMstrings.stepsBtns).indexOf(elem);
+    };
+
+    //set all steps before clicked (and clicked too) to active
+    const setActiveStep = activeStepNum => {
+
+      //remove active state from all the state
+      removeClasses(DOMstrings.stepsBtns, 'js-active');
+
+      //set picked items to active
+      DOMstrings.stepsBtns.forEach((elem, index) => {
+
+        if (index <= activeStepNum) {
+          elem.classList.add('js-active');
+        }
+
+      });
+    };
+
+    //get active panel
+    const getActivePanel = () => {
+
+      let activePanel;
+
+      DOMstrings.stepFormPanels.forEach(elem => {
+
+        if (elem.classList.contains('js-active')) {
+
+          activePanel = elem;
+
+        }
+
+      });
+
+      return activePanel;
+
+    };
+
+    //open active panel (and close unactive panels)
+    const setActivePanel = activePanelNum => {
+
+      //remove active class from all the panels
+      removeClasses(DOMstrings.stepFormPanels, 'js-active');
+
+      //show active panel
+      DOMstrings.stepFormPanels.forEach((elem, index) => {
+        if (index === activePanelNum) {
+
+          elem.classList.add('js-active');
+
+          setFormHeight(elem);
+
+        }
+      });
+
+    };
+
+    //set form height equal to current panel height
+    const formHeight = activePanel => {
+
+      const activePanelHeight = activePanel.offsetHeight;
+
+      DOMstrings.stepsForm.style.height = `${activePanelHeight}px`;
+
+    };
+
+    const setFormHeight = () => {
+      const activePanel = getActivePanel();
+
+      formHeight(activePanel);
+    };
+
+    //STEPS BAR CLICK FUNCTION
+    DOMstrings.stepsBar.addEventListener('click', e => {
+
+      //check if click target is a step button
+      const eventTarget = e.target;
+
+      if (!eventTarget.classList.contains(`${DOMstrings.stepsBtnClass}`)) {
+        return;
+      }
+
+      //get active button step number
+      const activeStep = getActiveStep(eventTarget);
+
+      // //set all steps before clicked (and clicked too) to active
+      // setActiveStep(activeStep);
+
+      // //open active panel
+      // setActivePanel(activeStep);
+
+    });
+
+    //PREV/NEXT BTNS CLICK
+    DOMstrings.stepsForm.addEventListener('click', e => {
+      const eventTarget = e.target;
+
+      //find active panel
+      const activePanel = findParent(eventTarget, `${DOMstrings.stepFormPanelClass}`);
+
+      let activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
+
+      setActiveStep(activePanelNum);
+      setActivePanel(activePanelNum);
+    });
+
+    //SETTING PROPER FORM HEIGHT ONLOAD
+    window.addEventListener('load', setFormHeight, false);
+
+    //SETTING PROPER FORM HEIGHT ONRESIZE
+    window.addEventListener('resize', setFormHeight, false);
+
+    //changing animation via animation select !!!YOU DON'T NEED THIS CODE (if you want to change animation type, just change form panels data-attr)
+
+    const setAnimationType = newType => {
+      DOMstrings.stepFormPanels.forEach(elem => {
+        elem.dataset.animation = newType;
+      });
+    };
+
+    function validateForm(activePanelNum) {
+      // This function deals with validation of the form fields with data-compulsory = 'true'
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("multisteps-form__panel");
+      // y = x[activePanelNum].getElementsByTagName("input") && x[activePanelNum].querySelectorAll('[type="text"]');
+      y =x[activePanelNum].querySelectorAll('[data-compulsory="true"]');
+
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        // console.log(y[i].value)
+        // If a field is empty...
+        if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          // and set the current valid status to false:
+          valid = false;
+        }
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        // document.getElementsByClassName("step")[activePanelNum].className += " finish";
+      }
+      return valid; // return the valid status
+    }
+
+  </script>
+
+  <script>
+
+    var lvl2ClassNum, lvl2StudentNum = 0;
+
+    const tutorImgUrl = document.getElementById("tutorImgUrl");
+    const tutorAgeGender = document.getElementById("tutorAgeGender");
+    const education = document.getElementById("education");
+    const area = document.getElementById("area");
+    const ratingBlockVal = document.getElementById("ratingBlockVal");
+    const ratingBlockReview = document.getElementById("ratingBlockReview");
+    const tutorName = document.getElementById("tutorName");
+    const teachingApproach  = document.getElementById("teachingApproach");
+    const teachingExp = document.getElementById("teachingExp");
+    const teachingApproachTitle  = document.getElementById("teachingApproachTitle");
+    const teachingExpTitle = document.getElementById("teachingExpTitle");
+
+
+    // Check if user logged on
+    AuthCheck();
+
+    // Page Specific Initialization
+    function loadPageInitFunc(){
+
+      console.log(current_id)
+      let checkInDocRef = db.collection("trigger").where("emp_id", "==", current_id)
+
+      checkInDocRef.onSnapshot((querySnapshot) => {
+       var cities = [];
+        querySnapshot.forEach((doc) => {
+            // cities.push(doc.data().checkInTime);
+            console.log("Trig: ");
+            console.log(doc.data());
+
+
+            renderCheckIn(doc.data())
+
+        });
+        // console.log("Current cities in CA: ", cities.join(", "));
+      });
+
+
+
+      // // Disable loading
+      // disableLoading();
+
+      // // Load revenue chart
+      // loadAllOrgRevenue();
+
+      // // Load request
+      // loadRequest();
+
+    }
+
+    function renderCheckIn(data){
+      // <div class="col-md-12" style="padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
+      //   <div class="review-card bg-white" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); cursor: default;">
+      //     <span class="request-label">RM 15 / hour</span>
+      //     <div class="row" style="margin-left: 12px; margin-right: 12px; display: inline-flex;">
+      //       <div style="height: 30px;width: 30px; display: inline-block; position: relative; overflow: hidden; border-radius: 50%;">
+      //         <img style="height: 100%;width: 100%; object-fit: cover;" src="data:image/png;base64,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">
+      //       </div>
+      //       <p class="align-self-center" style="font-weight: 400; margin-left: 12px; margin-bottom: 0;">Company ABC Sdn Bhd </p>
+      //       <p class="align-self-center" style="margin-left: 12px;  margin-bottom: 0;">  Warehouse Packer  </p>
+      //     </div>
+      //     <div class="row" style="margin: 8px 12px 0 12px;">
+      //       <p style="margin: 0; font-style: italic; font-size: small;">Check-In:  12/1/2023 8:31PM</div>
+      //   </div>
+      // </div>
+      // Label
+      let label_span = document.createElement('span');
+      label_span.className = "request-label"
+      label_span.innerHTML = "RM " + data.scheme_fee + " " + data.scheme_feeType;
+
+      // Name
+      let AvatarText = data.corp_name[0] + data.corp_name[1];
+      let imgUrl = generateAvatar(AvatarText, "#8c8c8c", "#eaeaea", "100px");
+      let imgHtml = "<img style='height: 100%;width: 100%; object-fit: cover;' src='"+imgUrl+"'>";
+
+      let img_div = document.createElement('div');
+      img_div.setAttribute("style","height: 30px;width: 30px; display: inline-block; position: relative; overflow: hidden; border-radius: 50%;");
+      img_div.innerHTML = imgHtml;
+
+      let nameP = document.createElement('p');
+      nameP.className = "align-self-center";
+      nameP.setAttribute("style", "font-weight: 400; margin-left: 12px; margin-bottom: 0;");
+      if (data.corp_name == null || data.corp_name == ""){
+        nameP.textContent = "Unknown user";
+      }else {
+        nameP.textContent = data.corp_name;
+      }
+
+      let roleP = document.createElement('p');
+      roleP.className = "align-self-center";
+      roleP.setAttribute("style", "margin-left: 12px; margin-bottom: 0;");
+      if (data.role == null || data.role == ""){
+        roleP.textContent = "";
+      }else {
+        roleP.textContent = data.role;
+      }
+
+      name_div_top = document.createElement('div');
+      name_div_top.className = "row";
+      name_div_top.setAttribute("style", "margin-left: 12px; margin-right: 12px; display: inline-flex;");
+      name_div_top.appendChild(img_div);
+      name_div_top.appendChild(nameP);
+      name_div_top.appendChild(roleP);
+
+      // Message
+      // let mssg_html = `<p style="margin: 0;">`+data.data()[REQUEST_REQUESTER_MESSAGE]+`</p>`;
+      // mssg_div = document.createElement('div');
+      // mssg_div.className = "row";
+      // mssg_div.setAttribute("style", "margin: 8px 12px 8px 12px;");
+      // mssg_div.innerHTML = mssg_html;
+
+      // Sent from
+
+      // let sent_html = "";
+      // if (data.data()[REQUEST_TYPE] === REQUEST_TYPE_TUTOR) {
+      //   let url = encode64(tutorId);
+      //   let url_string = "https://golearn.com.my/tutor?tid="+ url;
+      //   sent_html = data.data()[REQUEST_DATE_SENT].toDate().toLocaleDateString('en-GB') + ` Sent from <a href="`+url_string+`" target="_blank">profile</a>`
+      // }
+      // else if (data.data()[REQUEST_TYPE] === REQUEST_TYPE_COURSE){
+      //   let url = data.data()[REQUEST_URL];
+      //   let feeType = (data.data()[REQUEST_TARGET_FEE_TYPE] === FEES_TYPE_PER_HOUR_KEY) ? '/hr' : '/mth';
+      //   sent_html = data.data()[REQUEST_DATE_SENT].toDate().toLocaleDateString('en-GB') + ` Sent from <a href="`+url+`" target="_blank">`+data.data()[REQUEST_TARGET_NAME]+ " (RM" + data.data()[REQUEST_TARGET_FEE] + feeType+`)</a>`
+      // }
+      let sent_p = document.createElement('p');
+      sent_p.setAttribute("style", "margin: 0; font-style: italic; font-size: small;");
+      sent_p.innerHTML = "Check-In: " + data.check_in_time;
+
+      sent_div_top = document.createElement('div');
+      sent_div_top.className = "row";
+      sent_div_top.setAttribute("style", "margin: 8px 12px 0 12px;");
+      sent_div_top.appendChild(sent_p);
+
+      // Card
+      let card_div = document.createElement('div');
+      card_div.className = "review-card bg-white"
+      card_div.setAttribute("style", "border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); cursor: default;")
+      card_div.appendChild(label_span);
+      card_div.appendChild(name_div_top);
+      card_div.appendChild(sent_div_top);
+
+      // if (doc.data()[REQUEST_DATE_READ] == null || doc.data()[REQUEST_DATE_READ] == ""){
+      //   card_div.appendChild(label_span);
+      // }
+
+      // card_div.appendChild(name_div_top);
+
+      // if (doc.data()[REQUEST_REQUESTER_MESSAGE] == null || doc.data()[REQUEST_REQUESTER_MESSAGE] == ""){
+
+      // }else {
+      //   card_div.appendChild(mssg_div);
+      // }
+
+      // if (sent_html != ""){
+      //   card_div.appendChild(sent_div_top);
+      // }
+
+      // Card top
+      let card_top_div = document.createElement('div');
+      card_top_div.className = "col-md-12"
+      card_top_div.setAttribute("style", "padding-left: 5px; padding-right: 5px;padding-bottom: 5px;")
+      card_top_div.appendChild(card_div);
+
+      const requestBody = document.getElementById("requestBody");
+      requestBody.appendChild(card_top_div);
+
+
+    }
+
+
+    // Request Load More - Init
+    const loadmore = document.querySelector('#btnRequestLoadMore');
+    loadmore.style.visibility='hidden';
+    const loadmoreHandleClick = () =>{
+      loadRequest();
+    }
+    loadmore.addEventListener('click', loadmoreHandleClick );
+
+    // Load requests
+    var latestRequestDoc = null;
+    function loadRequest(){
+      let today = new Date(2100, 12, 31);// Set a big date
+
+      document.getElementById("card-load").style.display = "";
+
+      let docRef = db.collection("request")
+        .doc("v1")
+        .collection("all")
+        .where(REQUEST_ADMIN_ID, "==", tutorId)
+        .where(REQUEST_STATUS, "==", true)
+        .orderBy(REQUEST_DATE_SENT, 'desc')
+        .startAfter(latestRequestDoc || today)
+        .limit(5);
+
+      docRef
+      .get()
+      .then((querySnapshot) => {
+        document.getElementById("card-load").style.display = "none";
+        if (( querySnapshot.docs.length== null || querySnapshot.docs.length == 0) && latestRequestDoc == null){
+          document.getElementById("noRequestPlaceholder").style.display = 'initial';
+        }else{
+          document.getElementById("noRequestPlaceholder").style.display = 'none';
+        }
+
+        // Session Storage data
+        let docsObj = [];
+
+        var renderedCount = 0;
+        querySnapshot.forEach((doc) => {
+
+          // docsObj.push(data.data());
+
+
+          const currentDate = new Date();
+          const timestamp = currentDate.getTime();
+          // console.log("Now: "+timestamp);
+          let timeDiff = (timestamp-data.data()[REQUEST_DATE_SENT].toMillis())/1000/60/60;
+
+          // 1440 = 60D x 24 hr
+          if (timeDiff < 1440){
+            renderedCount = renderedCount + 1;
+            renderRequest(doc);
+          }
+          // console.log(data.data())
+        });
+
+        latestRequestDoc = querySnapshot.docs[querySnapshot.docs.length - 1];
+        // console.log(querySnapshot.docs.length)
+        // Handle Lesson Load more btn
+        if (querySnapshot.empty){
+          loadmore.removeEventListener('click', loadmoreHandleClick );
+        }
+
+        if (querySnapshot.docs.length == 5 && renderedCount == 5){
+          // Meaning all items is rendered and load more is valid
+          loadmore.style.visibility='visible';
+        }else if (querySnapshot.docs.length == 5 && renderedCount < 5){
+          // load more is not valid because not all item rendered
+          loadmore.style.visibility='hidden';
+        }
+        else{
+          loadmore.style.visibility='hidden';
+        }
+
+      });
+
+
+    }
+
+    function renderRequest(doc){
+      // <div class="col-md-12" style="padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
+      //   <div class="review-card bg-white" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); cursor: default;">
+      //     <span class="request-label">New <i class="fas fa-circle"></i></span>
+      //     <div class="row" style="margin-left: 12px; margin-right: 12px; display: inline-flex;">
+      //       <div style="height: 30px;width: 30px; display: inline-block; position: relative; overflow: hidden; border-radius: 50%;">
+      //         <img style="height: 100%;width: 100%; object-fit: cover;" src="data:image/png;base64,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">
+      //       </div>
+      //       <p class="align-self-center" style="font-weight: 400; margin-left: 12px; margin-bottom: 0;">Alric Liew </p>
+      //       <p class="align-self-center" style="margin-left: 12px;  margin-bottom: 0;">  Parent  &middot; <span style="font-weight: 400; cursor: pointer; color: #2e74b6;" onclick="viewPhone(this, '+601111111111', 'requestid');">Show Phone</span></p>
+      //     </div>
+
+      //     <div class="row" style="margin: 8px 12px 8px 12px;">
+      //       <p style="margin: 0;">New inquiry: Teacher give me good advice, i can understand fully, thanks 😁</p>
+      //     </div>
+
+      //     <div class="row" style="margin: 8px 12px 0 12px;">
+      //       <p style="margin: 0; font-style: italic; font-size: small;">Sent from
+      //         <a href="https://golearn.com.my/" target="_blank">profile</a> </p>
+      //     </div>
+      //   </div>
+      // </div>
+
+      // Label
+      let label_span = document.createElement('span');
+      label_span.className = "request-label"
+      label_span.innerHTML = `New <i class="fas fa-circle"></i>`;
+
+      // Name
+      let AvatarText = doc.data()[REQUEST_REQUESTER_NAME][0] + doc.data()[REQUEST_REQUESTER_NAME][1];
+      let imgUrl = generateAvatar(AvatarText, "#8c8c8c", "#eaeaea", "100px");
+      let imgHtml = "<img style='height: 100%;width: 100%; object-fit: cover;' src='"+imgUrl+"'>";
+
+      let img_div = document.createElement('div');
+      img_div.setAttribute("style","height: 30px;width: 30px; display: inline-block; position: relative; overflow: hidden; border-radius: 50%;");
+      img_div.innerHTML = imgHtml;
+
+      let nameP = document.createElement('p');
+      nameP.className = "align-self-center";
+      nameP.setAttribute("style", "font-weight: 400; margin-left: 12px; margin-bottom: 0;");
+      if (doc.data()[REQUEST_REQUESTER_NAME] == null || doc.data()[REQUEST_REQUESTER_NAME] == ""){
+        nameP.textContent = "Unknown user";
+      }else {
+        nameP.textContent = doc.data()[REQUEST_REQUESTER_NAME];
+      }
+
+      let person = (doc.data()[REQUEST_REQUESTER_PERSON] === REQUEST_REQUESTER_PERSON_PARENT) ? 'Parents' : 'Student';
+      let detailP = document.createElement('p');
+      detailP.className = "align-self-center";
+      detailP.setAttribute("style", "margin-left: 12px; margin-bottom: 0; font-size: small;");
+      if (doc.data()[REQUEST_DATE_READ] == null || doc.data()[REQUEST_DATE_READ] == ""){
+        detailP.innerHTML = person + ` &middot; <span style="font-weight: 400; cursor: pointer; color: #2e74b6;" onclick="viewPhone(this, '`+doc.data()[REQUEST_REQUESTER_PHONE]+`', '`+doc.data()[REQUEST_ID]+`');">Show Phone</span>`;
+
+      }else {
+        detailP.innerHTML = person + ` &middot; `+doc.data()[REQUEST_REQUESTER_PHONE];
+      }
+
+      name_div_top = document.createElement('div');
+      name_div_top.className = "row";
+      name_div_top.setAttribute("style", "margin-left: 12px; margin-right: 12px; display: inline-flex;");
+      name_div_top.appendChild(img_div);
+      name_div_top.appendChild(nameP);
+      name_div_top.appendChild(detailP);
+
+      // Message
+      let mssg_html = `<p style="margin: 0;">`+doc.data()[REQUEST_REQUESTER_MESSAGE]+`</p>`;
+      mssg_div = document.createElement('div');
+      mssg_div.className = "row";
+      mssg_div.setAttribute("style", "margin: 8px 12px 8px 12px;");
+      mssg_div.innerHTML = mssg_html;
+
+      // Sent from
+
+      let sent_html = "";
+      if (doc.data()[REQUEST_TYPE] === REQUEST_TYPE_TUTOR) {
+        let url = encode64(tutorId);
+        let url_string = "https://golearn.com.my/tutor?tid="+ url;
+        sent_html = doc.data()[REQUEST_DATE_SENT].toDate().toLocaleDateString('en-GB') + ` Sent from <a href="`+url_string+`" target="_blank">profile</a>`
+      }
+      else if (doc.data()[REQUEST_TYPE] === REQUEST_TYPE_COURSE){
+        let url = doc.data()[REQUEST_URL];
+        let feeType = (doc.data()[REQUEST_TARGET_FEE_TYPE] === FEES_TYPE_PER_HOUR_KEY) ? '/hr' : '/mth';
+        sent_html = doc.data()[REQUEST_DATE_SENT].toDate().toLocaleDateString('en-GB') + ` Sent from <a href="`+url+`" target="_blank">`+doc.data()[REQUEST_TARGET_NAME]+ " (RM" + doc.data()[REQUEST_TARGET_FEE] + feeType+`)</a>`
+      }
+      let sent_p = document.createElement('p');
+      sent_p.setAttribute("style", "margin: 0; font-style: italic; font-size: small;");
+      sent_p.innerHTML = sent_html;
+      sent_div_top = document.createElement('div');
+      sent_div_top.className = "row";
+      sent_div_top.setAttribute("style", "margin: 8px 12px 0 12px;");
+      sent_div_top.appendChild(sent_p);
+
+      // Card
+      let card_div = document.createElement('div');
+      card_div.className = "review-card bg-white"
+      card_div.setAttribute("style", "border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); cursor: default;")
+
+      if (doc.data()[REQUEST_DATE_READ] == null || doc.data()[REQUEST_DATE_READ] == ""){
+        card_div.appendChild(label_span);
+      }
+
+      card_div.appendChild(name_div_top);
+
+      if (doc.data()[REQUEST_REQUESTER_MESSAGE] == null || doc.data()[REQUEST_REQUESTER_MESSAGE] == ""){
+
+      }else {
+        card_div.appendChild(mssg_div);
+      }
+
+      if (sent_html != ""){
+        card_div.appendChild(sent_div_top);
+      }
+
+      // Card top
+      let card_top_div = document.createElement('div');
+      card_top_div.className = "col-md-12"
+      card_top_div.setAttribute("style", "padding-left: 5px; padding-right: 5px;padding-bottom: 5px;")
+      card_top_div.appendChild(card_div);
+
+      const requestBody = document.getElementById("requestBody");
+      requestBody.appendChild(card_top_div);
+
+    }
+
+
+    // Load all organization level revenue
+    function loadAllOrgRevenue(){
+      let fullYear = new Date().getFullYear();
+      let month = new Date().getMonth();
+      // console.log(month);
+
+      let docRef = db.collection("Report")
+          .doc("v1")
+          .collection("Revenue")
+          .where(REV_ADMIN_ID, "==", tutorId)
+          .where(REV_TYPE, "==", REV_TYPE_ORG)
+          .where(REV_MONTH, "==", fullYear+"99")
+          .where(REV_STATUS, "==", true)
+
+      docRef
+      .get()
+      .then((querySnapshot) => {
+
+        if(querySnapshot.empty) {
+          console.log("Empty ");
+        }
+        else {
+          querySnapshot.forEach((doc) => {
+
+            let monthRevenueList = doc.data()[REV_DOC_TOTAL_ARR];
+
+            // monthRevenueList.forEach((item) =>{
+              // addData(monthlyRevenueChart, '', item);
+            // });
+            addData(monthlyRevenueChart, '', monthRevenueList);
+
+            let thisMonthRevenue = 0;
+            let lastMonthRevenue = 0;
+            let revenueGrowth = 0;
+            // console.log('month: '+month);
+            // console.log(monthRevenueList[month])
+            // console.log(monthRevenueList[month-1])
+            if (month > 0 ){
+              thisMonthRevenue = monthRevenueList[month];
+              lastMonthRevenue = monthRevenueList[month - 1];
+              revenueGrowth = (thisMonthRevenue -  lastMonthRevenue) / lastMonthRevenue * 100;
+            }else{
+              revenueGrowth = 0;
+            }
+            // console.log(revenueGrowth);
+
+            if (revenueGrowth>= 0){
+              document.getElementById('monthRevenueText').innerHTML = "<span class='text-success'><i class='fa fa-long-arrow-up'></i> "+parseFloat(revenueGrowth.toFixed(1))+"%  </span> increase in this month sales.";
+            }else if(revenueGrowth < 0) {
+              document.getElementById('monthRevenueText').innerHTML = "<span class='text-danger'><i class='fa fa-long-arrow-down'></i> "+parseFloat(revenueGrowth.toFixed(1))+"%  </span> decrease in this month sales.";
+            }else {
+              // revenueGrowth = nan or other unexpected value
+              document.getElementById('monthRevenueText').innerHTML = "<span class='text-success'><i class='fa fa-long-arrow-up'></i> 0%  </span> increase in this month sales.";
+            }
+
+            document.getElementById('monthRevenueLastUpdate').innerHTML = "<i class='material-icons'>access_time</i> Updated "+doc.data()[REV_DATE_EDIT].toDate().toLocaleDateString("en-GB");;
+
+          });
+        }
+
+      });
+
+    }
+
+    // Push data to chart
+    function updateData(chart, label, data) {
+
+      chart.data.labels.push(label);
+      chart.data.datasets.forEach((dataset) => {
+        // console.log(dataset.data);
+
+        // console.log(data.datasets[0].data);
+        dataset.data.push(data);
+      });
+      chart.update();
+    }
+
+    function addData(chart, label, data) {
+
+      chart.data.labels.push(label);
+      chart.data.datasets.forEach((dataset) => {
+        // console.log(dataset.data);
+        // console.log(data.datasets[0].data);
+        dataset.data = data;
+      });
+      chart.update();
+    }
+
+    // Reload student number
+    function reloadStudentNum(){
+      $('#loadingModal').modal('show');
+
+      var docRef = db.collection("Class")
+          .doc("v1")
+          .collection("Student")
+          .where(STU_ADMIN_ID, "==", tutorId)
+          .where(STU_STATUS_ADMIN, "==", true);
+
+      docRef
+      .get()
+      .then((querySnapshot) => {
+
+        if(querySnapshot.empty) {
+          // console.log("Empty ");
+          resetNum(0, NUM_TYPE_STUDENT);
+        }
+        else {
+          console.log("Found ");
+          querySnapshot.forEach((doc) => {
+
+            console.log(doc.data());
+            // updateDashboard(doc);
+          });
+
+          let stuNum = querySnapshot.docs.length;
+          // console.log(stuNum)
+          resetNum(stuNum, NUM_TYPE_STUDENT);
+        }
+
+      });
+
+    }
+
+    // Reload class number
+    function reloadClassNum(){
+      $('#loadingModal').modal('show');
+
+      var docRef = db.collection("Class")
+          .doc("v1")
+          .collection("Class")
+          .where(CLASS_ADMIN_ID, "==", tutorId)
+          .where(STATUS_KEY, "==", true);
+
+      docRef
+      .get()
+      .then((querySnapshot) => {
+
+        if(querySnapshot.empty) {
+          // console.log("Empty ");
+          resetNum(0, NUM_TYPE_CLASS);
+        }
+        else {
+          console.log("Found ");
+          querySnapshot.forEach((doc) => {
+
+            console.log(doc.data());
+            // updateDashboard(doc);
+          });
+
+          let classNum = querySnapshot.docs.length;
+          console.log(classNum)
+          resetNum(classNum, NUM_TYPE_CLASS);
+        }
+
+      });
+
+    }
+
+    // Reload teacer number
+    function reloadTutorNum(){
+      $('#loadingModal').modal('show');
+
+      var docRef = db.collection("Class")
+          .doc("v1")
+          .collection("Tutor")
+          .where(TUTOR_ADMIN_ID, "==", tutorId)
+          .where(TUTOR_STATUS_ADMIN, "in", [TUTOR_STATUS_TYPE_ACTIVE, TUTOR_STATUS_TYPE_PASSIVE]);
+
+      docRef
+      .get()
+      .then((querySnapshot) => {
+
+        if(querySnapshot.empty) {
+          // console.log("Empty ");
+          resetNum(0, NUM_TYPE_TEACHER);
+        }
+        else {
+          console.log("Found ");
+          querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+          });
+
+          let tutorNum = querySnapshot.docs.length;
+          console.log(tutorNum)
+          resetNum(tutorNum, NUM_TYPE_TEACHER);
+        }
+
+      });
+
+    }
+
+    // Report: Update Student Number
+    function resetNum(value, type){
+
+      let docRef = db.collection("Report")
+        .doc("v1")
+        .collection("General")
+        .where(NUM_ADMIN_ID, "==", tutorId)
+        .where(NUM_TYPE, "==", type)
+        .limit(1);
+
+
+      docRef
+      .get()
+      .then((querySnapshot) => {
+
+        if(querySnapshot.empty) {
+          console.log("Empty. create new doc ");
+          let reportDocRef = db.collection("Report")
+            .doc("v1")
+            .collection("General")
+            .doc();
+
+          reportData ={
+            [NUM_ID]: reportDocRef.id,
+            [NUM_ADMIN_ID]: tutorId,
+            [NUM_TYPE]: type,
+            [NUM_VALUE]: (value == null || value == "" || value == 0 || isNaN(value)) ? 0 : parseInt(value),
+            [NUM_DATE_EDIT]: new Date(),
+          }
+
+          console.log(reportData)
+          reportDocRef
+            .set(reportData, { merge: true })
+            .then(() => {
+              // $('#loadingModal').modal('hide');
+              window.location.href='./';
+            });
+
+        }
+        else {
+          // console.log("Data found Update: ");
+
+          querySnapshot.forEach((doc) => {
+
+            console.log(doc.data());
+
+            let reportDocRef = db.collection("Report")
+              .doc("v1")
+              .collection("General")
+              .doc(doc.data()[NUM_ID]);
+
+
+            reportData ={
+              // [NUM_ID]: reportDocRef.id,
+              // [NUM_ADMIN_ID]: tutorId,
+              // [NUM_TYPE]: ,
+              [NUM_VALUE]: (value == null || value == "" || value == 0 || isNaN(value)) ? 0 : parseInt(value),
+              [NUM_DATE_EDIT]: new Date(),
+            }
+
+            console.log(reportData)
+            reportDocRef
+              .set(reportData, { merge: true })
+              .then(() => {
+                // window.location.href='./';
+                $('#loadingModal').modal("hide");
+                window.location.reload()
+              });
+
+          });
+
+
+        }
+
+
+      });
+
+    }
+
+    // // Sign out
+    // function signOutFunction(){
+    //   $('#signOutModal').modal('show');
+    //   $("#signOutModal").appendTo("body");
+    // }
+
+    // Copy a text based on element ID
+    function copyText(targetElemId){
+      /* Get the text field */
+      let copyText = document.getElementById(targetElemId);
+      // console.log(copyText)
+      // console.log(copyText.select())
+      /* Select the text field */
+      copyText.focus();
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      func.showNotification('top','center', 'success', 'check_circle', "Link copied.");
+      /* Alert the copied text */
+      // alert("Copied the text: " + copyText.value);
+    }
+
+
+    // Disable loading screen
+    function disableLoading() {
+      let tutor_upper_block_loading = document.getElementsByTagName('body')[0].querySelectorAll(".loading")
+      // console.log(tutor_upper_block_loading);
+      tutor_upper_block_loading.forEach(function (row) {
+        row.setAttribute("style", "display: none;")
+      });
+
+    }
+
+    // Generate a 2 char avatar
+    function generateAvatar(text, foregroundColor, backgroundColor, fontSize) {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      canvas.width = 200;
+      canvas.height = 200;
+
+      // Draw background
+      context.fillStyle = backgroundColor;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw text
+      context.font = "bold " + fontSize + " Arial";
+      context.fillStyle = foregroundColor;
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+      return canvas.toDataURL("image/png");
+    }
+
+    // Request - Review phone number
+    function viewPhone(ele, phone, requestId){
+
+      ele.textContent = phone;
+      ele.removeAttribute('style');
+      ele.removeAttribute('onclick');
+
+      // Remove unread lable
+      let reviewCardEle = ele.parentNode.parentNode.parentNode;
+
+      reviewCardEle.querySelector('.request-label').remove();
+      console.log(reviewCardEle)
+      updateReadStatus(requestId);
+
+    }
+
+    function updateReadStatus(requestId){
+
+      var docRef = db.collection("request")
+          .doc("v1")
+          .collection("all")
+          .doc(requestId);
+
+      db.runTransaction((transaction) => {
+        return transaction.get(docRef).then((doc) => {
+            if (!doc.exists) {
+                throw "Document does not exist!";
+            }
+
+            var data = {
+              [REQUEST_DATE_READ] : new Date(),
+            }
+
+            transaction.update(docRef, data);
+
+        });
+      }).then(() => {
+
+        console.log("Update done ");
+
+      }).catch((err) => {
+        // This will be an "population is too big" error.
+        console.error(err);
+      });
+
+
+    }
+
+  </script>
+
+  <script>
+		$( document ).ready(function() {
+
+      // $('#btnIWantThisTutor').on('click', function (e) {
+      //   $('#checkInModal').modal('show');
+      //   if (current_accountStatus == DEACTIVATED_ACCOUNT_STATUS_KEY){
+      //     document.getElementById("checkInModalLabel").textContent = "Activate your Account Now. It's free!"
+      //     document.getElementById("checkInModalBody").textContent = "You are just 1 step away from getting access to unlimited tuition jobs, free personal tutor profile, professional looks and many more features!"
+      //     document.getElementById("btncheckInModalUpdate").textContent = "Join Us";
+      //   }else if (current_accountStatus == SUSPENDED_ACCOUNT_STATUS_KEY){
+      //     document.getElementById("checkInModalLabel").textContent = "Your Account is Suspended"
+      //     document.getElementById("checkInModalBody").textContent = "Please contact us fix this."
+      //     document.getElementById("btncheckInModalUpdate").textContent = "Contact Us"
+      //   }else {
+      //     document.getElementById("checkInModalLabel").textContent = "Ready to Grow your Tutoring Career?"
+      //     document.getElementById("checkInModalBody").textContent = "Upgrade to Pro to enjoy more premium subjects and priorities. From part time tutors to full time tutors, private educators and education centers, there’s always a GoLearn Pro plan for you."
+      //     document.getElementById("btncheckInModalUpdate").textContent = "Upgrade"
+      //   }
+
+      // });
+
+      $('#btncheckInModalUpdate').on('click', function (e) {
+
+        // $('#checkInModal').modal('hide');
+
+        let corporateId = document.getElementById("checkInSelect").value
+        let corp_name =  $("#checkInSelect option:selected" ).text();
+        // let scheme_id =  $("#checkInSelect option:selected" ).text();
+        // let scheme_fee =  $("#checkInSelect option:selected" ).text();
+        // let scheme_feeType =  $("#checkInSelect option:selected" ).text();
+        // let scheme_role =  $("#checkInSelect option:selected" ).text();
+
+        // let corp_name = document.getElementById("checkInSelect").selected.text
+
+        // console.log(corporateId, corp_name)
+
+
+        document.getElementById("btncheckInModalUpdate").setAttribute("disabled", true)
+        document.getElementById("btncheckInModalUpdate").textContent = "Processing. Please Wait..."
+
+
+        CheckIn(corporateId, corp_name);
+
+      });
+
+      $('#btnSignOutModalUpdate').on('click', function (e) {
+
+        firebase.auth().signOut().then(() => {
+          // Sign-out successful.
+          }).catch((error) => {
+            window.alert("Logging out failed");
+            func.showNotification('top','center', 'danger', 'error_outline', "Logging out failed." );
+          });
+        // Do something
+        // $('#signOutModal').modal('hide');
+      });
+
+      // Active Register Class Modal
+      $('#loadingModal').modal({
+        backdrop:'static',
+        keyboard:false,
+        show: false
+      });
+
+    });
+
+  </script>
+
+  <script>
+    function CheckIn(corp_id, corp_name) {
+
+      // current_id, corporateId,
+
+
+      var triggerDocRef = db.collection("trigger").doc()
+
+      var docData = {
+        id  : triggerDocRef.id,
+        emp_id : current_id,
+        emp_name: current_name,
+        corp_id  : corp_id,
+        corp_name: corp_name,
+        scheme_id: "xxxxxx",
+        scheme_role: "Promoter",
+        scheme_fee: "15",
+        scheme_feeType: "Per Hour",
+        status  : "NEW",
+        check_in_time : new Date(),
+      }
+
+      console.log(docData)
+      triggerDocRef.set(docData, {merge: true})
+      .then(() => {
+        document.getElementById("btncheckInModalUpdate").removeAttribute("disabled")
+        document.getElementById("btncheckInModalUpdate").textContent = "Confirm"
+        // window.location.reload()
+      })
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
